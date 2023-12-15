@@ -117,10 +117,32 @@
 
     processOrder(){
       const thisProduct = this;;
-      console.log(thisProduct.processOrder);
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      console.log('formData', formData);
+      let price = thisProduct.data.price;
+      for(let paramId in thisProduct.data.params) {
+        const param = thisProduct.data.params[paramId];
+        console.log(paramId, param);
+    
+        for(let optionId in param.options) {
+          const option = param.options[optionId];
+          console.log(optionId, option);
+          if(formData[paramId] && formData[paramId].includes(optionId)) {
 
+            if(!option.default) {
+              price += parseFloat(option.price); 
+            }
+            } else {
+                if(option.default) {
+                  price -= parseFloat(option.price);
+                }
+              } 
+        }
+      }
+      thisProduct.priceElem.innerHTML = price;
     }
   }
+  
 
   const app = {
     initMenu: function(){
