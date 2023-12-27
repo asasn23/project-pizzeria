@@ -182,13 +182,32 @@
       }
       thisProduct.priceSingle = price; 
       thisProduct.amount = thisProduct.amountWidget.value;
-      price *=thisProduct.amountWidget.value;
+      price *= thisProduct.amountWidget.value;
       thisProduct.dom.priceElem.innerHTML = price;
+    }
+
+    addToCart(){
+      const thisProduct = this;
+      app.cart.add(thisProduct.preparateCartProduct());
+    }
+
+    preparateCartProduct(){
+      const thisProduct = this;
+      const productSummary = {
+        id: thisProduct.id,
+        name: thisProduct.data.name,
+        amount: thisProduct.amountWidget.value,
+        priceSingle: thisProduct.priceSingle,
+        price: thisProduct.priceSingle * thisProduct.amountWidget.value,
+        params: thisProduct.prepareCartProductParams(),
+      };
+      console.log('what?:', productSummary);
+      return productSummary;
     }
 
     prepareCartProductParams() {
       const thisProduct = this;
-      const formData = utils.serializeFormToObject(thisProduct.form);
+      const formData = utils.serializeFormToObject(thisProduct.dom.form);
       const params = {};
       for(let paramId in thisProduct.data.params) {
         const param = thisProduct.data.params[paramId];
@@ -207,23 +226,6 @@
       return params;
     }
 
-    prepareCartProduct(){
-      const thisProduct = this;
-      const productSummary = {
-        id: thisProduct.id,
-        name: thisProduct.data.name,
-        amount: thisProduct.amount,
-        priceSingle: thisProduct.priceSingle,
-        price: thisProduct.priceSingle * thisProduct.amountWidget.value,
-        params: thisProduct.prepareCartProductParams(),
-      };
-      return productSummary;
-    }
-
-    addToCart(){
-      const thisProduct = this;
-      app.cart.add(thisProduct.prepareCartProduct());
-    }
   }
   
   class AmountWidget{
@@ -306,12 +308,12 @@
       });
     }
 
-    add(menuProduct){
+    add(menuProduct) {
       const thisCart = this;
       const generatedHTML = templates.cartProduct(menuProduct);
-      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
-      thisCart.dom.productList.appendChild(generatedDOM);
-      
+      const element = utils.createDOMFromHTML(generatedHTML);
+      thisCart.dom.productList.appendChild(element);
+      console.log(menuProduct);
     }
   }
 
