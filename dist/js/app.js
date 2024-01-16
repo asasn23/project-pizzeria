@@ -2,6 +2,7 @@ import {settings, select, classNames, templates} from './settings.js';
 import Product from './components/product.js';
 import Cart from './components/cart.js';
 import Booking from './components/booking.js';
+import Home from './components/home.js';
 
 const app = {
   initPages: function(){
@@ -80,6 +81,25 @@ const app = {
     thisApp.booking = new Booking(thisApp.bookingWidgetElement);
   },
 
+  initHome: function (){
+    const thisApp = this;
+      thisApp.homeContainer = document.querySelector(select.containerOf.home);
+
+      thisApp.home = new Home(thisApp.homeContainer);
+
+      thisApp.homeLinks=document.querySelectorAll(select.home.homeLinks)
+      for (let homeLink of thisApp.homeLinks){
+        homeLink.addEventListener('click', function(event){
+          const clickedElement = this;
+          console.log('clickedelement',clickedElement);
+          event.preventDefault();
+          const linkId = clickedElement.getAttribute('href').replace('#','');
+          thisApp.activatePage(linkId);
+          window.location.hash = '#/' + linkId;
+        });
+      }
+    },
+
   init: function(){
     const thisApp = this;
     console.log('*** App starting ***');
@@ -91,6 +111,7 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initHome();
   },
 };
 

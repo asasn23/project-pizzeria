@@ -1,14 +1,20 @@
 export const select = {
-    templateOf: {
-      menuProduct: "#template-menu-product",
-      cartProduct: '#template-cart-product',
-      bookingWidget: '#template-booking-widget',
+  templateOf: {
+    menuProduct: "#template-menu-product",
+    cartProduct: '#template-cart-product',
+    bookingWidget: '#template-booking-widget',
+    home:'#template-home',
     },
     containerOf: {
       menu: '#product-list',
       cart: '#cart',
       pages: '#pages',
       booking: '.booking-wrapper',
+      home:'.home-wrapper',
+      carousel: '.main-carousel',
+    },
+    home: {
+      homeLinks: '.home-button',
     },
     all: {
       menuProducts: '#product-list > .product',
@@ -28,18 +34,18 @@ export const select = {
         input: 'input.amount',
         linkDecrease: 'a[href="#less"]',
         linkIncrease: 'a[href="#more"]',
-      },
-      datePicker: {
-        wrapper: '.date-picker',
-        input: `input[name="date"]`,
+        },
+        datePicker: {
+          wrapper: '.date-picker',
+          input: `input[name="date"]`,
       },
       hourPicker: {
-        wrapper: '.hour-picker',
-        input: 'input[type="range"]',
-        output: '.output',
+          wrapper: '.hour-picker',
+          input: 'input[type="range"]',
+          output: '.output',
       },
-    },
-    booking: {
+  },
+  booking: {
       peopleAmount: '.people-amount',
       hoursAmount: '.hours-amount',
       tables: '.floor-plan .table',
@@ -48,10 +54,12 @@ export const select = {
       phone: '[name="phone"]',
       address: '[name="address"]',
       starters: '.checkbox label input',
-    },
-    nav: {
-        links: '.main-nav a',
-    },
+  },
+  nav: {
+      links: '.main-nav a',
+  },
+
+
     cart: {
       productList: '.cart__order-summary',
       toggleTrigger: '.cart__summary',
@@ -70,9 +78,10 @@ export const select = {
       edit: '[href="#edit"]',
       remove: '[href="#remove"]',
     },
+
   };
 
-export const classNames = {
+export  const classNames = {
     menuProduct: {
       wrapperActive: 'active',
       imageVisible: 'active',
@@ -81,29 +90,41 @@ export const classNames = {
       wrapperActive: 'active',
     },
     booking: {
-        loading: 'loading',
-        tableBooked: 'booked',
-        tableSelected: 'selected',
-    },
-    nav: {
-        active: 'active',
-    },
-    pages: {
-        active: 'active',
-    }
+      loading: 'loading',
+      tableBooked: 'booked',
+      tableSelected: 'selected',
+  },
+  nav: {
+      active: 'active',
+  },
+  pages: {
+      active: 'active',
+  }
+
   };
 
-export const settings = {
+export  const settings = {
     amountWidget: {
       defaultValue: 1,
-      defaultMin: 1,
+      defaultMin: 0,
       defaultMax: 9,
     },
     cart: {
       defaultDeliveryFee: 20,
     },
+    hours: {
+      open: 12,
+      close: 24,
+  },
+  datePicker: {
+      maxDaysInFuture: 14,
+  },
+  booking: {
+      tableIdAttribute: 'data-table',
+  },
+
     db: {
-      url: '//localhost:3131',
+      url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
       products: 'products',
       orders: 'orders',
       bookings: 'bookings',
@@ -112,21 +133,13 @@ export const settings = {
       dateEndParamKey: 'date_lte',
       notRepeatParam: 'repeat=false',
       repeatParam: 'repeat_ne=false',
-    },
-    hours: {
-        open: 12,
-        close: 24,
-    },
-    datePicker: {
-        maxDaysInFuture: 14,
-    },
-    booking: {
-        tableIdAttribute: 'data-table',
+
     },
   };
 
-export const templates = {
+export  const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
     cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
     bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
+    home: Handlebars.compile(document.querySelector(select.templateOf.home).innerHTML),
   };

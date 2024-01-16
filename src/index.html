@@ -6,9 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider-min.css">
+  <link rel="stylesheet" href="vendor/flickity.css" media="screen">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,6 +22,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -62,6 +64,9 @@
   </header>
 
   <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -243,9 +248,117 @@
     </div>
   </script>
 
+  <script id="template-home" type="text/x-handlebars-template">
+    <div class="home-header">
+      <div class="first-section-wrapper">
+        <div href = "order" class="home-button">
+          <h2>ORDER ONLINE</h2>
+          <p>Delicious food delivered to your door</p>
+
+        </div>
+        <div href ="booking" class="home-button">
+          <h2>BOOK A TABLE</h2>
+          <p>Book a table in our restaurant</p>
+        </div>
+        <div>
+          <h2>OPENING HOURS:</h2>
+          <p>TUE-SUN, 12PM-12AM</p>
+        </div>
+      </div>
+      <div class="main-carousel" data-flickity='{ "cellAlign": "center", "autoPlay": true, "autoPlay":3000, "wrapAround": true,
+      "prevNextButtons": false}'>
+        <div class="carousel-cell">
+          <div class="image">
+            <img src="images/home/pizza-3.jpg">
+          </div>
+          <div class="description">
+            <p>Amazing service!</p>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            <p>- Margaret Osborne</p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <div class="image">
+            <img src="images/home/pizza-3.jpg">
+          </div>
+          <div class="description">
+            <p>Best pizza ever!</p>
+            <p> It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s.</p>
+            <p>- Peter Walson</p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <div class="image">
+            <img src="images/home/pizza-3.jpg">
+          </div>
+          <div class="description">
+            <p>Good prices!</p>
+            <p> It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.</p>
+            <p>- Anna Kitty</p>
+          </div>
+        </div>
+      </div>
+      <div class="gallery">
+        <div class="gallery-image">
+          <img src="images/home/pizza-4.jpg">
+          <div class="overlay">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-share-nodes"></i></a>
+          </div>
+          </div>
+
+
+        <div class="gallery-image">
+          <img src="images/home/pizza-5.jpg">
+          <div class="overlay">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-share-nodes"></i></a>
+          </div>
+        </div>
+
+
+        <div class="gallery-image">
+          <img src="images/home/pizza-6.jpg">
+          <div class="overlay">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-share-nodes"></i></a>
+          </div>
+        </div>
+
+
+        <div class="gallery-image">
+          <img src="images/home/pizza-7.jpg">
+          <div class="overlay">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-share-nodes"></i></a>
+          </div>
+        </div>
+
+        <div class="gallery-image">
+          <img src="images/home/pizza-8.jpg">
+          <div class="overlay">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-share-nodes"></i></a>
+          </div>
+        </div>
+        <div class="gallery-image">
+          <img src="images/home/pizza-9.jpg">
+          <div class="overlay">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-share-nodes"></i></a>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <a href="#">See more on Instagram</a>
+      </footer>
+    </div>
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider-min.js"></script>
+  <script src="vendor/flickity.pkgd.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
 </html>
